@@ -18,7 +18,9 @@ you can control the stream thru curl as well
 curl -v http://localhost:4000/v1/stream/control -H "Content-Type: application/json" -d '{"ctrl":"start"}'
 ```
 
-## For production on target debian based server. (I used Ubuntu 22.04):
+## For Production: 
+** production target should be debian based server. (I used Ubuntu 22.04) **
+
 create .envrc file in project root folder and add:
 ```
 PRODUCTION_HOST_IP=<your_server_ip>
