@@ -1,6 +1,7 @@
+# Go Streaming example with greenlight and pion
 This is created from the base templete from https://github.com/DataDavD/greenlight.
 
-##For Development:
+## For Development:
 create .envrc file in project root folder and add:
 ```
 GREENLIGHT_DB_DSN=<your_database_connection_string>
@@ -17,7 +18,7 @@ you can control the stream thru curl as well
 curl -v http://localhost:4000/v1/stream/control -H "Content-Type: application/json" -d '{"ctrl":"start"}'
 ```
 
-##For production on target debian based server. (I used Ubuntu 22.04):
+## For production on target debian based server. (I used Ubuntu 22.04):
 create .envrc file in project root folder and add:
 ```
 PRODUCTION_HOST_IP=<your_server_ip>
