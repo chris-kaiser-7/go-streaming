@@ -19,7 +19,7 @@ curl -v http://localhost:4000/v1/stream/control -H "Content-Type: application/js
 ```
 
 ## For Production: 
-** production target should be debian based server. (I used Ubuntu 22.04) **
+**production target should be debian based server. (I used Ubuntu 22.04)**
 
 create .envrc file in project root folder and add:
 ```
