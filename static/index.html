@@ -62,8 +62,8 @@
     }
 
     try {
-      //const response = await fetch('https://greenlight.typedex.dev/v1/stream/join', {
-      const response = await fetch(`http://localhost:4000/v1/stream/join/${id}`, {
+        //const response = await fetch(`http://localhost:4000/v1/stream/join/${id}`, {
+        const response = await fetch(`https://stream.api.typedex.dev/v1/stream/join/${id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ sdp: sdList[id] })

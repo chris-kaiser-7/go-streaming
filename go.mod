@@ -9,6 +9,7 @@ require (
 	github.com/wneessen/go-mail v0.6.2
 	golang.org/x/crypto v0.36.0
 	golang.org/x/time v0.11.0
+	github.com/pion/webrtc/v4 v4.0.14
 )
 
 require (
@@ -29,7 +30,6 @@ require (
 	github.com/pion/stun/v3 v3.0.0 // indirect
 	github.com/pion/transport/v3 v3.0.7 // indirect
 	github.com/pion/turn/v4 v4.0.0 // indirect
-	github.com/pion/webrtc/v4 v4.0.14 // indirect
 	github.com/wlynxg/anet v0.0.5 // indirect
 	golang.org/x/exp/typeparams v0.0.0-20231108232855-2478ac86f678 // indirect
 	golang.org/x/mod v0.23.0 // indirect

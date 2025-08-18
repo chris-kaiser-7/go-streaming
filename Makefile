@@ -23,6 +23,11 @@ confirm:
 run/api:
 	go run ./cmd/api -db-dsn=${GREENLIGHT_DB_DSN} -cors-trusted-origins="http://localhost:8080"
 
+## run/client: run the cmd/client application
+.PHONY: run/client
+run/client:
+	go run ./cmd/client
+
 ## db/psql: connect to the database using psql
 .PHONY: db/psql
 db/psql:
@@ -79,11 +84,11 @@ build/api:
 	GOOS=linux GOARCH=amd64 go build -ldflags='-s' -o=./bin/linux_amd64/api ./cmd/api
 
 ## build/api: build the cmd/api application
-.PHONY: build/streamclient
-build/streamclient:
-	@echo 'Building cmd/examples/stream'
-	go build -ldflags='-s' -o=./bin/stream ./cmd/examples/stream
-	GOOS=linux GOARCH=amd64 go build -ldflags='-s' -o=./bin/linux_amd64/stream ./cmd/examples/stream
+.PHONY: build/client
+build/client:
+	@echo 'Building cmd/client...'
+	go build -ldflags='-s' -o=./bin/streamclient ./cmd/client
+	GOOS=linux GOARCH=amd64 go build -ldflags='-s' -o=./bin/linux_amd64/streamclient ./cmd/client
 
 # ==================================================================================== #
 # PRODUCTION
@@ -112,14 +117,14 @@ production/deploy/api:
 		&& sudo systemctl reload caddy \
 	'
 
-## production/deploy/api: deploy the api to production
-.PHONY: production/deploy/streamclient
-production/deploy/streamclient:
-	rsync -P ./bin/linux_amd64/stream greenlight@${production_host_ip}:~
-	rsync -P ./remote/production/stream.service greenlight@${production_host_ip}:~
+## production/deploy/client: deploy the api to production
+.PHONY: production/deploy/client
+production/deploy/client:
+	rsync -P ./bin/linux_amd64/streamclient greenlight@${production_host_ip}:~
+	rsync -P ./remote/production/streamclient.service greenlight@${production_host_ip}:~
 	rsync -rP --delete ./static greenlight@${production_host_ip}:~
 	ssh -t greenlight@${production_host_ip} '\
-		sudo mv ~/stream.service /etc/systemd/system/ \
-		&& sudo systemctl enable stream \
-		&& sudo systemctl restart stream \
+		sudo mv ~/streamclient.service /etc/systemd/system/ \
+		&& sudo systemctl enable streamclient \
+		&& sudo systemctl restart streamclient \
 	'
