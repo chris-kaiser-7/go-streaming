@@ -119,7 +119,7 @@ production/stream/start:
 production/stream/pause:
 	curl -v https://${API_URL_HOST}/v1/stream/control -H "Content-Type: application/json"  -d '{"ctrl":"pause"}'
 
-## production/deploy/api: deploy the api to production
+## production/deploy/api: deploy the api to production server
 .PHONY: production/deploy/api
 production/deploy/api:
 	rsync -P ./bin/linux_amd64/api greenlight@${PRODUCTION_HOST_IP}:~
@@ -135,7 +135,7 @@ production/deploy/api:
 		&& sudo systemctl reload caddy \
 	'
 
-## production/deploy/client: deploy the api to production
+## production/deploy/client: deploy the api to production server
 .PHONY: production/deploy/client
 production/deploy/client:
 	rsync -P ./bin/linux_amd64/streamclient greenlight@${PRODUCTION_HOST_IP}:~
